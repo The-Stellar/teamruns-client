@@ -12,6 +12,7 @@ export class PositionData extends InteractionData {
     rotY: number;
     tgtState: number | undefined; //symbol number
     currentLevel: number | undefined; //symbol number
+    currentLevelStr: string | undefined;
 
     constructor() {
         super();
@@ -38,6 +39,7 @@ export class UserPositionData extends PositionData {
         this.interCleanup = positionData.interCleanup;
         this.tgtState = positionData.tgtState;
         this.currentLevel = positionData.currentLevel;
+        this.currentLevelStr = positionData.currentLevelStr;
         this.transX = positionData.transX;
         this.transY = positionData.transY;
         this.transZ = positionData.transZ;
@@ -58,6 +60,7 @@ export class UserPositionData extends PositionData {
             transZ: 0,
             tgtState: undefined,
             currentLevel: undefined,
+            currentLevelStr: undefined,
             interType: positionData.interType,
             interAmount: positionData.interAmount,
             interStatus: positionData.interStatus,

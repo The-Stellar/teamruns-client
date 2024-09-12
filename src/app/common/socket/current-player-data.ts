@@ -91,9 +91,9 @@ export class CurrentPlayerData {
             this.positionDataFull.tgtState = positionData.tgtState;
         }
         
-        if (positionData.currentLevel !== undefined && (this.positionDataFull.currentLevel === undefined || this.positionDataFull.currentLevel !== positionData.currentLevel)) {
-            this.positionData.currentLevel = positionData.currentLevel;
-            this.positionDataFull.currentLevel = positionData.currentLevel;
+        if (positionData.currentLevelStr !== undefined && (this.positionDataFull.currentLevelStr === undefined || this.positionDataFull.currentLevelStr !== positionData.currentLevelStr)) {
+            this.positionData.currentLevelStr = positionData.currentLevelStr;
+            this.positionDataFull.currentLevelStr = positionData.currentLevelStr;
         }
         
         this.checkUpdateUsername(username);
@@ -113,17 +113,17 @@ export class CurrentPlayerData {
         return this.positionDataFull.username ?? "";
     }
 
-    getCurrentLevel(): number | undefined {
-        return this.positionDataFull.currentLevel ?? this.positionData.currentLevel;
+    getCurrentLevel(): string | undefined {
+        return this.positionDataFull.currentLevelStr ?? this.positionData.currentLevelStr;
     }
 
     addCurrentLevelUpdate() {
-        if (this.positionData.currentLevel === undefined)
-            this.positionData.currentLevel = this.positionDataFull.currentLevel;
+        if (this.positionData.currentLevelStr === undefined)
+            this.positionData.currentLevelStr = this.positionDataFull.currentLevelStr;
     }
 
     resetNoneOverwritableValues() {
-        this.positionDataFull.currentLevel = undefined;
+        this.positionDataFull.currentLevelStr = undefined;
         this.positionDataFull.username = undefined;
     }
 
@@ -153,10 +153,10 @@ export class CurrentPlayerData {
             this.positionDataFull.color = this.positionData.color;
     }
 
-    isInLevel(levelSymbol: number | undefined): boolean {
-        if (levelSymbol) {
+    isInLevel(levelName: string | undefined): boolean {
+        if (levelName) {
         }
-        return levelSymbol !== undefined && this.positionDataFull.currentLevel === levelSymbol || this.positionData.currentLevel === levelSymbol; 
+        return levelName !== undefined && this.positionDataFull.currentLevelStr === levelName || this.positionData.currentLevelStr === levelName; 
     }
 
     isInState(state: MultiplayerState, orUndefined: boolean = false) {

@@ -559,7 +559,7 @@ export class SocketHandler {
 
             for (let i = currentPlayer.recordingDataIndex; i < recording.playback.length; i++) {
                 if (recording.playback[i].cL !== undefined) {
-                    currentPlayer.positionData.currentLevel = recording.playback[i].cL;
+                    currentPlayer.positionData.currentLevelStr = recording.playback[i].cL;
                     break;
                 }
             }
@@ -574,10 +574,10 @@ export class SocketHandler {
             if (player.isInState(MultiplayerState.disconnected, true))
                 this.setPlayerMultiplayerState(player);
 
-            if (!player.isInLevel(positionData.currentLevel)) {
+            if (!player.isInLevel(positionData.currentLevelStr)) {
                 this.addCommand(OgCommand.OnRemoteLevelUpdate);
                 const runPlayer = this.run.getPlayer(player.positionData.userId);
-                if (runPlayer) runPlayer.currentLevel = LevelSymbol.toName(positionData.currentLevel);
+                if (runPlayer) runPlayer.currentLevel = positionData.currentLevelStr;
             }
             
             player.updateCurrentPosition(positionData, positionData.username, isLocalUser);
@@ -633,7 +633,7 @@ export class SocketHandler {
                     if (!currentPlayer)
                         this.checkRegisterPlayer(Recording.getUserBase(recording), recording.state);
                     else {
-                        if (!currentPlayer.isInLevel(positionData.currentLevel))
+                        if (!currentPlayer.isInLevel(positionData.currentLevelStr))
                             this.addCommand(OgCommand.OnRemoteLevelUpdate);
 
                         const previousRecordingdataIndex = currentPlayer.recordingDataIndex ?? recording.playback.length;
@@ -658,7 +658,7 @@ export class SocketHandler {
                                         newDataIndexHasAnimationState = true;
                                     }
                                     if (recording.playback[i].cL !== undefined) { //make sure we don't skip any level changes
-                                        currentPlayer.positionData.currentLevel = recording.playback[i].cL;
+                                        currentPlayer.positionData.currentLevelStr = recording.playback[i].cL;
                                     }
                                 }
                             }

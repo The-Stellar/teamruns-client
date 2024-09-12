@@ -45,7 +45,7 @@ export class UserRecording extends Recording {
         newRecordingPos.qW = this.prevPosIn?.quatW === newPos.quatW ? undefined : newPos.quatW;
         newRecordingPos.rY = this.prevPosIn?.rotY === newPos.rotY ? undefined : newPos.rotY;
         newRecordingPos.tS = this.prevPosIn?.tgtState === newPos.tgtState ? undefined : newPos.tgtState;
-        newRecordingPos.cL = this.prevPosIn?.currentLevel === newPos.currentLevel ? undefined : newPos.currentLevel;
+        newRecordingPos.cL = this.prevPosIn?.currentLevelStr === newPos.currentLevelStr ? undefined : newPos.currentLevelStr;
         newRecordingPos.t = newPos.time;
         
         this.playback.unshift(newRecordingPos);

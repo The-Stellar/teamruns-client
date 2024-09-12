@@ -15,6 +15,7 @@ export class CurrentPositionData {
     rotY: number | undefined;
     tgtState: number | undefined; //symbol number
     currentLevel: number | undefined; //symbol number
+    currentLevelStr: string | undefined;
     
     interaction: InteractionData | undefined;
     playerInfo: RemotePlayerInfo | undefined;
@@ -46,6 +47,7 @@ export class CurrentPositionData {
         this.rotY = undefined;
         this.tgtState = undefined;
         this.currentLevel = undefined;
+        this.currentLevelStr = undefined;
         this.username = undefined;
         this.color = undefined;
         this.mpState = undefined;
@@ -63,6 +65,7 @@ export class CurrentPositionData {
         if (this.rotY === undefined) this.rotY = positionData.rotY;
         if (this.tgtState === undefined) this.tgtState = positionData.tgtState;
         if (this.currentLevel === undefined) this.currentLevel = positionData.currentLevel;
+        if (this.currentLevelStr === undefined) this.currentLevelStr = positionData.currentLevelStr;
         if (this.userId === undefined) this.userId = positionData.userId;
         if (this.username === undefined) this.username = positionData.username;
         if (this.color === undefined) this.color = positionData.color;

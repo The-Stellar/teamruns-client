@@ -7,7 +7,7 @@ import { PlayerBase } from "./player-base";
 
 export class Player extends PlayerBase {
     cellsCollected: number = 0;
-    currentLevel: string = "";
+    currentLevel: string | undefined;
     gameState: GameState = new GameState();
     state: PlayerState = PlayerState.Neutral;
 
